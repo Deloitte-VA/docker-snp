@@ -66,8 +66,8 @@ RUN curl -SL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
 
 ADD application.properties $CATALINA_HOME/lib/application.properties
 ADD tomcat-users.xml $CATALINA_HOME/conf/tomcat-users.xml
-#RUN mkdir -p /data/uploads && curl -SL "$WAR_URL" -o "$CATALINA_HOME/webapps/snpweb.war"
-ADD web-0.2-SNAPSHOT.war $CATALINA_HOME/webapps/snpweb.war
+RUN mkdir -p /data/uploads && curl -SL "$WAR_URL" -o "$CATALINA_HOME/webapps/snpweb.war"
+
 
 ADD docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
