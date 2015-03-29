@@ -64,7 +64,7 @@ RUN curl -SL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
   && rm bin/*.bat \
   && rm tomcat.tar.gz*
 
-ADD application.properties $CATALINA_HOME/lib/application.properties
+ADD application.properties $CATALINA_HOME/lib/config.properties
 ADD tomcat-users.xml $CATALINA_HOME/conf/tomcat-users.xml
 
 # Used for releases (comment out for development)
