@@ -12,7 +12,7 @@ Release Procedures:
   - Make sure that the release for [Semantic Normalization Prototype](https://github.com/jlgrock/snp-prototype) to Sonatype OSS has been completed.
   - Update the version in the [Dockerfile](https://github.com/Deloitte-VA/snp-prototype-tomcat/blob/master/Dockerfile)
   - `sudo docker build -t jlgrock/snp-prototype-tomcat`
-  - `sudo docker push jlgrock/snp-prototype-tomcat`
+  - `sudo docker push jlgrock/snp-prototype-tomcat:[VERSION]` (replacing [VERSION] with the actual version number)
   - Check in your changes and update Docker hub instructions, if necessary.
 
 Run Procedures:
