@@ -6,7 +6,7 @@ This is used to support the [Semantic Normalization Prototype](https://github.co
 Release Procedures:
   - sudo docker build -t jlgrock/snp-prototype-tomcat
   - sudo docker push jlgrock/snp-prototype-tomcat
-  - 
+
 Run Procedures:
 see [Docker Hub](https://registry.hub.docker.com/u/jlgrock/snp-prototype-mongodb/)
 
