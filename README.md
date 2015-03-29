@@ -3,6 +3,11 @@ Docker container used for publishing the snp-prototype project war within a tomc
 
 This is used to support the [Semantic Normalization Prototype](https://github.com/jlgrock/snp-prototype).  Documentation on how to use this can also be found there.  
 
+Development Procedures:
+  - Comment out the section marked "Used for releases" and uncomment the section marked "Used for development", updating the file that you wish to upload in the [Dockerfile](https://github.com/Deloitte-VA/snp-prototype-tomcat/blob/master/Dockerfile).
+  - `sudo docker build -t jlgrock/snp-prototype-tomcat`
+  - DO NOT CHECK THIS CODE IN
+
 Release Procedures:
   - Make sure that the release for [Semantic Normalization Prototype](https://github.com/jlgrock/snp-prototype) to Sonatype OSS has been completed.
   - Update the version in the [Dockerfile](https://github.com/Deloitte-VA/snp-prototype-tomcat/blob/master/Dockerfile)
