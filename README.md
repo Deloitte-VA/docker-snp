@@ -8,7 +8,7 @@ Release Procedures:
   - sudo docker push jlgrock/snp-prototype-tomcat
 
 Run Procedures:
-see [Docker Hub](https://registry.hub.docker.com/u/jlgrock/snp-prototype-mongodb/)
+  - see [Docker Hub](https://registry.hub.docker.com/u/jlgrock/snp-prototype-mongodb/)
 
 Travis-CI Build Status
 ---------------------
