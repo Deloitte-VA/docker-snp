@@ -71,7 +71,7 @@ ADD tomcat-users.xml $CATALINA_HOME/conf/tomcat-users.xml
 RUN mkdir -p /data/uploads && curl -SL "$WAR_URL" -o "$CATALINA_HOME/webapps/snpweb.war"
 
 # Used for development
-# ADD [INSERT_FILE_HERE] /usr/local/tomcat/webapps/snpweb.war
+# ADD web-0.2-SNAPSHOT.war /usr/local/tomcat/webapps/snpweb.war
 
 ADD docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
