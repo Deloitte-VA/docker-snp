@@ -6,8 +6,8 @@ This is used to support the [Semantic Normalization Prototype](https://github.co
 Release Procedures:
   - Make sure that the release for [Semantic Normalization Prototype](https://github.com/jlgrock/snp-prototype) to Sonatype OSS has been completed.
   - Update the version in the [Dockerfile](https://github.com/Deloitte-VA/snp-prototype-tomcat/blob/master/Dockerfile)
-  - sudo docker build -t jlgrock/snp-prototype-tomcat
-  - sudo docker push jlgrock/snp-prototype-tomcat
+  - `sudo docker build -t jlgrock/snp-prototype-tomcat`
+  - `sudo docker push jlgrock/snp-prototype-tomcat`
   - Check in your changes and update Docker hub instructions, if necessary.
 
 Run Procedures:
