@@ -6,6 +6,7 @@ RUN apt-get update -qqy && \
 	apt-get install -qqy \
   software-properties-common \
   python-software-properties \
+  libgtk-3-dev \
   wget \
   curl \
   zip \
@@ -42,15 +43,13 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
 ENV TOMCAT_MAJOR 8
 ENV TOMCAT_VERSION 8.0.20
 ENV WAR_VERSION 0.1
+ENV SOLOR_GOODS_VERSION 1.2
 
 # Define commonly used JAVA_HOME variable
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
-#ENV WAR_URL http://search.maven.org/remotecontent?filepath=com/github/jlgrock/snp/web/$WAR_VERSION/web-$WAR_VERSION.war
-ENV WAR_URL https://oss.sonatype.org/content/groups/staging/com/github/jlgrock/snp/web/$WAR_VERSION/web-$WAR_VERSION.war
-
 WORKDIR $CATALINA_HOME
 
 # Define working directory.
@@ -69,10 +68,11 @@ ADD log4j.properties $CATALINA_HOME/lib/log4j.properties
 ADD tomcat-users.xml $CATALINA_HOME/conf/tomcat-users.xml
 
 # Used for releases (comment out for development)
-RUN mkdir -p /data/uploads && curl -SL "$WAR_URL" -o "$CATALINA_HOME/webapps/snpweb.war"
-
-# Used for development
-#ADD web-0.2-SNAPSHOT.war /usr/local/tomcat/webapps/snpweb.war
+RUN mkdir -p /data/uploads /data/object-chronicles /data/search
+ADD snpweb.war $CATALINA_HOME/webapps/snpweb.war
+# ADD lucene.zip /data/lucene.zip
+# ADD cradle.zip /data/cradle.zip
+# RUN unzip /data/cradle.zip -d /data/ && unzip /data/lucene.zip -d /data/
 
 ADD docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
