@@ -2,11 +2,11 @@ FROM debian:wheezy
 MAINTAINER Justin Grant <jlgrock@gmail.com> "http://www.justinleegrant.com"
 
 # Update apt-get and install add-apt-repository
+#libgtk-3-dev \
 RUN apt-get update -qqy && \
 	apt-get install -qqy \
   software-properties-common \
   python-software-properties \
-  libgtk-3-dev \
   wget \
   curl \
   zip \
@@ -70,9 +70,9 @@ ADD tomcat-users.xml $CATALINA_HOME/conf/tomcat-users.xml
 # Used for releases (comment out for development)
 RUN mkdir -p /data/uploads /data/object-chronicles /data/search
 ADD snpweb.war $CATALINA_HOME/webapps/snpweb.war
-# ADD lucene.zip /data/lucene.zip
-# ADD cradle.zip /data/cradle.zip
-# RUN unzip /data/cradle.zip -d /data/ && unzip /data/lucene.zip -d /data/
+ADD lucene.zip /data/lucene.zip
+ADD cradle.zip /data/cradle.zip
+RUN unzip /data/cradle.zip -d /data/ && unzip /data/lucene.zip -d /data/
 
 ADD docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
