@@ -10,14 +10,14 @@ set -e
 
 #deletefiles
 
-echo "Enter SNP Prototype Version:"
-read SNP_VERSION
+#echo "Enter SNP Prototype Version:"
+#read SNP_VERSION
 
 #echo "Enter Solor Goods Version:"
 #read SOLOR_GOODS_VERSION
 
-echo "Copying War from ~/.m2 ..."
-cp ~/.m2/repository/com/github/jlgrock/snp/web/${SNP_VERSION}/web-${SNP_VERSION}.war ./snpweb.war
+#echo "Copying War from ~/.m2 ..."
+#cp ~/.m2/repository/com/github/jlgrock/snp/web/${SNP_VERSION}/web-${SNP_VERSION}.war ./snpweb.war
 
 # echo "Downloading Lucene Index from ~/.m2..."
 # cp /Users/jlgrock/.m2/repository/gov/vha/solor/snomed/${SOLOR_GOODS_VERSION}/snomed-${SOLOR_GOODS_VERSION}-all.lucene.zip ./lucene.zip
