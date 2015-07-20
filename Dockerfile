@@ -1,4 +1,4 @@
-FROM deloitteva/tomcat:8.0.23
+FROM deloitteva/docker-tomcat:8.0.23
 MAINTAINER Justin Grant <jlgrock@gmail.com> "http://www.justinleegrant.com"
 
 # Add the application specifi properties
