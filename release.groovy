@@ -8,11 +8,13 @@ def executeCommand(String cmd) {
 	def sout = new StringBuffer(), serr = new StringBuffer()
 	def proc = cmd.execute()
 	proc.waitForProcessOutput(sout, serr)
-	//proc.waitForOProcessOutput()
+	
 	if (sout)
 		println "out> $sout"
 	if (serr)
 		println "err> $serr"
+	if (proc.exitValue() != 0)
+		System.exit(1)
 }
 
 def renameFile(String file1, String file2) {
