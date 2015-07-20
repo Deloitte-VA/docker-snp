@@ -63,11 +63,11 @@ def downloadFiles() {
 def buildAndReleaseDockerImage(String snpVersion) {
 	println()
 	println "Building/Pushing docker images for latest and $snpVersion"
-	executeCommand("docker build -t deloitteva/snp-prototype-tomcat:$snpVersion .")
-	executeCommand("docker tag -f deloitteva/snp-prototype-tomcat:$snpVersion jlgrock/snp-prototype-tomcat:latest")
+	executeCommand("docker build -t deloitteva/docker-snp:$snpVersion .")
+	executeCommand("docker tag -f deloitteva/docker-snp:$snpVersion jlgrock/snp-prototype-tomcat:latest")
 	if (!snpVersion.contains("-SNAPSHOT"))
-		executeCommand("docker push deloitteva/snp-prototype-tomcat:$snpVersion")
-	executeCommand("docker push deloitteva/snp-prototype-tomcat:latest")
+		executeCommand("docker push deloitteva/docker-snp:$snpVersion")
+	executeCommand("docker push deloitteva/docker-snp:latest")
 }
 
 deleteFiles()
