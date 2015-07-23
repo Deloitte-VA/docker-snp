@@ -66,6 +66,7 @@ def downloadFiles() {
 def buildAndReleaseDockerImage(String snpVersion) {
 	println()
 	println "Building/Pushing docker images for latest and $snpVersion"
+	executeCommand("whoami")
 	executeCommand("docker build -t deloitteva/docker-snp:$snpVersion .")
 	executeCommand("docker tag -f deloitteva/docker-snp:$snpVersion jlgrock/docker-snp:latest")
 	if (!snpVersion.contains("-SNAPSHOT"))
