@@ -4,7 +4,7 @@ def deleteFiles() {
 
 }
 
-def executeCommand(String cmd) { 
+def executeCommand(def cmd) { 
 	def sout = new StringBuffer(), serr = new StringBuffer()
 	def proc = cmd.execute()
 	proc.waitForProcessOutput(sout, serr)
