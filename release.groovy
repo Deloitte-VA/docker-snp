@@ -8,7 +8,8 @@ def executeCommand(String cmd) {
 	def sout = new StringBuffer(), serr = new StringBuffer()
 	def proc = cmd.execute()
 	proc.waitForProcessOutput(sout, serr)
-	
+	if (sout || serr)
+		println "CMD: $cmd"
 	if (sout)
 		println "out> $sout"
 	if (serr)
