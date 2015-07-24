@@ -71,10 +71,10 @@ def buildAndReleaseDockerImage(String snpVersion) {
 
 	println "Building/Pushing docker images for latest and $snpVersion"
 	executeBashCommand("docker build -t deloitteva/docker-snp:$snpVersion .")
-	executeBashCommand("docker tag -f deloitteva/docker-snp:$snpVersion jlgrock/docker-snp:latest")
+	executeBashCommand("docker tag -f deloitteva/docker-snp:$snpVersion deloitteva/docker-snp:latest")
 	if (!snpVersion.contains("-SNAPSHOT"))
 		executeBashCommand("docker push deloitteva/docker-snp:$snpVersion")
-	executeBashCommand("docker tag jlgrock/docker-snp:latest jlgrock/docker-snp:$snpVersion")
+
 	executeBashCommand("docker push deloitteva/docker-snp:latest")
 }
 
