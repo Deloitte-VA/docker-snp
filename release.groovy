@@ -5,11 +5,11 @@ def deleteFiles() {
 }
 
 def executeBashCommand(String cmd) { 
+	println "CMD: $cmd"
+
 	def sout = new StringBuffer(), serr = new StringBuffer()
 	def proc = ["/bin/sh", "-c", cmd].execute()
 	proc.waitForProcessOutput(sout, serr)
-	if (sout || serr)
-		println "CMD: $cmd"
 	if (sout)
 		println "out> $sout"
 	if (serr)
