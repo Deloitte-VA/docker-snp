@@ -74,7 +74,7 @@ def buildAndReleaseDockerImage(String snpVersion) {
 	executeBashCommand("docker tag -f deloitteva/docker-snp:$snpVersion jlgrock/docker-snp:latest")
 	if (!snpVersion.contains("-SNAPSHOT"))
 		executeBashCommand("docker push deloitteva/docker-snp:$snpVersion")
-	executeBashCommand("docker tag creack/node:latest jlgrock/docker-snp:$snpVersion")
+	executeBashCommand("docker tag jlgrock/docker-snp:latest jlgrock/docker-snp:$snpVersion")
 	executeBashCommand("docker push deloitteva/docker-snp:latest")
 }
 
