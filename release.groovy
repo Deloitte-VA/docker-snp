@@ -67,7 +67,7 @@ def buildAndReleaseDockerImage(String snpVersion) {
 	println()
 	println "Check that the Docker image is running and who it is running as..."
 	executeBashCommand("whoami")
-	executeBashCommand("ps aux | grep docker"])
+	executeBashCommand("ps aux | grep docker")
 
 	println "Building/Pushing docker images for latest and $snpVersion"
 	executeBashCommand("docker build -t deloitteva/docker-snp:$snpVersion .")
