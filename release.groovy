@@ -64,18 +64,21 @@ def downloadFiles() {
 }
 
 def buildAndReleaseDockerImage(String snpVersion) {
+	String owner = "deloitteva"
+	String imageName = "docker-snp"
+
 	println()
 	println "Check that the Docker image is running and who it is running as..."
 	executeBashCommand("whoami")
 	executeBashCommand("ps aux | grep docker")
 
-	println "Building/Pushing docker images for latest and $snpVersion"
-	executeBashCommand("docker build -t deloitteva/docker-snp:$snpVersion .")
-	executeBashCommand("docker tag -f deloitteva/docker-snp:$snpVersion deloitteva/docker-snp:latest")
+	println "Building/Pushing docker images for latest and ${snpVersion}"
+	executeBashCommand("docker build -t ${owner}/${imageName}:${snpVersion} .")
+	executeBashCommand("docker tag -f ${owner}/${imageName}:${snpVersion} ${owner}/${imageName}:latest")
 	if (!snpVersion.contains("-SNAPSHOT"))
-		executeBashCommand("docker push deloitteva/docker-snp:$snpVersion")
+		executeBashCommand("docker push ${owner}/${imageName}:${snpVersion}")
 
-	executeBashCommand("docker push deloitteva/docker-snp:latest")
+	executeBashCommand("docker push ${owner}/${imageName}:latest")
 }
 
 deleteFiles()
