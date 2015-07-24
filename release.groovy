@@ -4,9 +4,9 @@ def deleteFiles() {
 
 }
 
-def executeCommand(def cmd) { 
+def executeBashCommand(String cmd) { 
 	def sout = new StringBuffer(), serr = new StringBuffer()
-	def proc = cmd.execute()
+	def proc = ["/bin/sh", "-c", cmd].execute()
 	proc.waitForProcessOutput(sout, serr)
 	if (sout || serr)
 		println "CMD: $cmd"
@@ -49,7 +49,7 @@ def downloadFiles() {
 	file.delete()
 
 	println "Downloading War..."
-	executeCommand("mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DgroupId=com.github.jlgrock.snp -DartifactId=web -Dversion=${currentVersions.snpVersion} -Dpackaging=war -Ddest=.")
+	executeBashCommand("mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DgroupId=com.github.jlgrock.snp -DartifactId=web -Dversion=${currentVersions.snpVersion} -Dpackaging=war -Ddest=.")
 	renameFile("web-${currentVersions.snpVersion}.war", "snpweb.war")
 
 	//println "Downloading Lucene Index (this may take a while)..."
@@ -66,15 +66,15 @@ def downloadFiles() {
 def buildAndReleaseDockerImage(String snpVersion) {
 	println()
 	println "Check that the Docker image is running and who it is running as..."
-	executeCommand("whoami")
-	executeCommand(["/bin/sh", "-c", "ps aux | grep docker"])
+	executeBashCommand("whoami")
+	executeBashCommand("ps aux | grep docker"])
 
 	println "Building/Pushing docker images for latest and $snpVersion"
-	executeCommand("docker build -t deloitteva/docker-snp:$snpVersion .")
-	executeCommand("docker tag -f deloitteva/docker-snp:$snpVersion jlgrock/docker-snp:latest")
+	executeBashCommand("docker build -t deloitteva/docker-snp:$snpVersion .")
+	executeBashCommand("docker tag -f deloitteva/docker-snp:$snpVersion jlgrock/docker-snp:latest")
 	if (!snpVersion.contains("-SNAPSHOT"))
-		executeCommand("docker push deloitteva/docker-snp:$snpVersion")
-	executeCommand("docker push deloitteva/docker-snp:latest")
+		executeBashCommand("docker push deloitteva/docker-snp:$snpVersion")
+	executeBashCommand("docker push deloitteva/docker-snp:latest")
 }
 
 deleteFiles()
