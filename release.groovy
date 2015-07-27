@@ -5,11 +5,23 @@ def deleteFiles() {
 }
 
 def executeBashCommand(String cmd) { 
+	// print the command before it is executed (just in case it fails for some reason)
 	println "CMD: $cmd"
 
 	def sout = new StringBuffer(), serr = new StringBuffer()
+	// create a bash process, based off of the command array.  Process should return 
+	// immediately but a new thread will be spawned off to execute the other command
 	def proc = ["/bin/sh", "-c", cmd].execute()
-	proc.waitForProcessOutput(sout, serr)
+	
+	// this will consume the output of the process so that it prevents blocking, as well
+	// as so we can print it out
+	proc.consumeProcessOutput(sout, serr)
+
+	// will wait for the process to execute for 5 minutes, otherwise it will kill
+	// the spawned process
+	proc.waitForOrKill(300000)
+
+	// print out the appropriate information
 	if (sout)
 		println "out> $sout"
 	if (serr)
