@@ -9,6 +9,10 @@ ADD log4j.properties $CATALINA_HOME/lib/log4j.properties
 RUN mkdir -p /data/uploads /data/object-chronicles /data/search
 ADD snpweb.war $CATALINA_HOME/webapps/snpweb.war
 
+RUN echo "default.dir.location=/data/uploads" >> /usr/local/tomcat/conf/catalina.properties \
+	&& echo "default.chronicle.location=/data/object-chronicles/" >> /usr/local/tomcat/conf/catalina.properties \
+	&& echo "default.index.location=/data/search/" >> /usr/local/tomcat/conf/catalina.properties
+
 ADD docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 

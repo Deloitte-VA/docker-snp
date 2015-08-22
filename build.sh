@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-docker build -t jlgrock/snp-prototype-tomcat .
+docker build -t deloitteva/docker-snp .

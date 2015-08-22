@@ -52,7 +52,7 @@ def slurpXML() {
 
 def downloadFiles() {
 	println "Downloading POM..."
-	def url = "https://raw.githubusercontent.com/Deloitte-VA/snp-prototype/master/pom.xml" 
+	def url = "https://raw.githubusercontent.com/Deloitte-VA/snp-prototype/snp-0.3/pom.xml" 
     def file = new File('pom.xml')
     def fileOS = file.newOutputStream()
     fileOS << new URL(url).openStream()
@@ -87,7 +87,7 @@ def buildAndReleaseDockerImage(String snpVersion) {
 	println "Building/Pushing docker images for latest and ${snpVersion}"
 	executeBashCommand("docker build -t ${owner}/${imageName}:${snpVersion} .")
 	executeBashCommand("docker tag -f ${owner}/${imageName}:${snpVersion} ${owner}/${imageName}:latest")
-	if (!snpVersion.contains("-SNAPSHOT"))
+	//if (!snpVersion.contains("-SNAPSHOT"))
 		executeBashCommand("docker push ${owner}/${imageName}:${snpVersion}")
 
 	executeBashCommand("docker push ${owner}/${imageName}:latest")
